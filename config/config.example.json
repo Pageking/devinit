@@ -1,18 +1,32 @@
 {
     "github": {
-        "org": "Pageking",
-        "template_repo": "pk-theme-child"
+        "org": "",
+        "template_repo": ""
     },
-    "plesk_servers": {
-        "dev-1": {
-            "label": "Dev Server 1",
+    "servers": {
+        "server_1": {
+			"label": "",
+            "domain": "",
+			"server": "test@123.123.123.100",
             "ip": "123.123.123.100",
-            "user": "admin"
+            "user": "admin",
+			"password": "",
+			"www_root": "httpdocs"
         },
-        "dev-2": {
-            "label": "Dev Server 2",
+        "server_2": {
+			"label": "",
+            "domain": "",
+			"server": "test@123.123.123.100",
             "ip": "123.123.123.101",
-            "user": "admin"
+            "user": "admin",
+			"password": "",
+			"www_root": "httpdocs"
         }
-    }
+    },
+	"wp": {
+		"admin_username": "",
+		"admin_password": "",
+		"admin_email": "",
+		"db_prefix": "wp"
+	}
 }
