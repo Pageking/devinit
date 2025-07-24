@@ -4,7 +4,8 @@
 set -e
 
 CONFIG_PATH="$HOME/.config/devinit/config.json"
-EXAMPLE_PATH="$(brew --prefix devinit)/config/config.example.json"
+BREW_PREFIX=$(brew --prefix devinit)
+EXAMPLE_PATH="${BREW_PREFIX}/config/config.example.json"
 
 if [[ ! -f "$CONFIG_PATH" ]]; then
 	echo "❌ Config not found at $CONFIG_PATH"
@@ -27,10 +28,10 @@ shift || true
 
 case "$COMMAND" in
   init)
-    source "$(brew --prefix devinit)/lib/init.sh"
+    source "${BREW_PREFIX}/libexec/lib/init.sh"
     ;;
   deploy-test)
-    source "$(brew --prefix devinit)/lib/deploy-test.sh"
+    source "${BREW_PREFIX}/libexec/lib/deploy-test.sh"
     ;;
   *)
     echo "Usage: devinit <command>"
