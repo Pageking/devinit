@@ -6,6 +6,18 @@ if [[ -z "$PROJECT_NAME" ]]; then
   exit 1
 fi
 
+if [ ! -d "pk-theme" ];
+then
+  echo "❌ Error: This command must be run in a theme folder where 'pk-theme/' exists."
+  echo "📁 Current directory: $(pwd)"
+  exit 1
+fi
+if [ -d "pk-theme-child" ];
+then
+  echo "❌ Error: This command must be run without an existing pk-theme-child folder."
+  exit 1
+fi
+
 CONFIG_PATH="$HOME/.config/devinit/config.json"
 GITHUB_ORG=$(jq -r '.github.org' "$CONFIG_PATH")
 TEMPLATE_REPO=$(jq -r '.github.template_repo' "$CONFIG_PATH")
