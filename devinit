@@ -6,9 +6,16 @@ set -e
 CONFIG_PATH="$HOME/.config/devinit/config.json"
 
 if [[ ! -f "$CONFIG_PATH" ]]; then
-  echo "❌ Config not found at $CONFIG_PATH"
-  echo "👉 Copy config/config.example.json to ~/.config/devinit/config.json and fill it in."
-  exit 1
+	echo "❌ Config not found at $CONFIG_PATH"
+	read -p "👉 Create config from example? [y/N]: " create_config
+	if [[ "$create_config" =~ ^[Yy]$ ]]; then
+		mkdir -p "$(dirname "$CONFIG_PATH")"
+		cp "$(dirname "$0")/config/config.example.json" "$CONFIG_PATH"
+		echo "✅ Config created at $CONFIG_PATH. Please review and fill it in."
+	else
+		echo "Aborted. Please copy config/config.example.json to ~/.config/devinit/config.json and fill it in."
+		exit 1
+	fi
 fi
 
 # Stores the first command-line argument (e.g., init or deploy) into the COMMAND variable.
