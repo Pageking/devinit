@@ -11,7 +11,7 @@ if [[ ! -f "$CONFIG_PATH" ]]; then
 	read -p "❔ Create config from example? [y/N]: " create_config
 	if [[ "$create_config" =~ ^[Yy]$ ]]; then
     	mkdir -p "$(dirname "$CONFIG_PATH")"
-    	cp "${EXAMPLE_PATH}/config/config.example.json" "$CONFIG_PATH"
+    	cp "$EXAMPLE_PATH" "$CONFIG_PATH"
     	echo "✅ Config created at $CONFIG_PATH. Please review and fill it in."
 	else
 		echo "Aborted. Please copy config/config.example.json to ~/.config/devinit/config.json and fill it in."
