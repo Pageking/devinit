@@ -4,6 +4,7 @@
 set -e
 
 CONFIG_PATH="$HOME/.config/devinit/config.json"
+EXAMPLE_PATH="$(brew --prefix devinit)/config/config.example.json"
 
 if [[ ! -f "$CONFIG_PATH" ]]; then
 	echo "❌ Config not found at $CONFIG_PATH"
