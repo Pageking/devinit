@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# exit on error
+set -e
+
+CONFIG_PATH="$HOME/.config/devinit/config.json"
+
+if [[ ! -f "$CONFIG_PATH" ]]; then
+  echo "❌ Config not found at $CONFIG_PATH"
+  echo "👉 Copy config/config.example.json to ~/.config/devinit/config.json and fill it in."
+  exit 1
+fi
+
+# Stores the first command-line argument (e.g., init or deploy) into the COMMAND variable.
+COMMAND=$1
+
+# Removes the first argument (already stored in COMMAND) from the list of $@ arguments.
+shift || true
+
+case "$COMMAND" in
+  init)
+    source "$(dirname "$0")/lib/init.sh"
+    ;;
+  deploy-test)
+    source "$(dirname "$0")/lib/deploy-test.sh"
+    ;;
+  *)
+    echo "Usage: devinit <command>"
+    echo "Commands:"
+    echo "  init <project-name>    Initialize GitHub repo + dev env"
+    echo "  deploy-test <project-name>  (Coming soon)"
+    ;;
+esac

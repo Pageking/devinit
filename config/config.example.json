@@ -1,0 +1,18 @@
+{
+    "github": {
+        "org": "Pageking",
+        "template_repo": "pk-theme-child"
+    },
+    "plesk_servers": {
+        "dev-1": {
+            "label": "Dev Server 1",
+            "ip": "123.123.123.100",
+            "user": "admin"
+        },
+        "dev-2": {
+            "label": "Dev Server 2",
+            "ip": "123.123.123.101",
+            "user": "admin"
+        }
+    }
+}
