@@ -27,10 +27,10 @@ shift || true
 
 case "$COMMAND" in
   init)
-    source "$(dirname "$0")/lib/init.sh"
+    source "$(brew --prefix devinit)/lib/init.sh"
     ;;
   deploy-test)
-    source "$(dirname "$0")/lib/deploy-test.sh"
+    source "$(brew --prefix devinit)/lib/deploy-test.sh"
     ;;
   *)
     echo "Usage: devinit <command>"
