@@ -9,8 +9,6 @@
             "domain": "",
 			"server": "test@123.123.123.100",
             "ip": "123.123.123.100",
-            "user": "admin",
-			"password": "",
 			"www_root": "httpdocs"
         },
         "server_2": {
@@ -18,8 +16,6 @@
             "domain": "",
 			"server": "test@123.123.123.100",
             "ip": "123.123.123.101",
-            "user": "admin",
-			"password": "",
 			"www_root": "httpdocs"
         }
     },
