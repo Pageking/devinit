@@ -41,7 +41,7 @@ cd "$CLONE_DIR"
 # Rename and push branches
 git checkout -b development
 git push -u origin development
-gh api -X PATCH "repos/$GITHUB_ORG/$PROJECT_NAME" -f default_branch="development"
+gh api -X PATCH "repos/$GITHUB_ORG/$PROJECT_NAME" -f default_branch="development">/dev/null
 git push origin --delete main 2>/dev/null || true
 
 for BRANCH in test staging production; do
