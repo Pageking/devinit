@@ -5,6 +5,10 @@ if [[ -z "$PROJECT_NAME" ]]; then
   echo "❌ Missing project name. Usage: devinit init <project-name>"
   exit 1
 fi
+if [[ ! "$PROJECT_NAME" =~ ^[a-z0-9-]+$ ]]; then
+  echo "Invalid project name. Use only lowercase letters, numbers, and hyphens (no spaces or special characters)."
+  exit 1
+fi
 
 if [ ! -d "pk-theme" ];
 then
