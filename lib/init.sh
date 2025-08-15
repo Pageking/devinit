@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "/opt/homebrew/opt/devinit/libexec/lib/helpers/check-public-folder.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/helpers/check-public-folder.sh"
 check_public_folder
 
 PROJECT_NAME=$1
