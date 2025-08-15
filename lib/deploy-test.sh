@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname "$0")/check_public_folder.sh"
+source "$(dirname "$0")/helpers/check-public-folder.sh"
 check_public_folder
 
 CONFIG_PATH="$HOME/.config/devinit/config.json"
