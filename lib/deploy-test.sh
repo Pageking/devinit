@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source "$(dirname "$0")/check_public_folder.sh"
+check_public_folder
+
 CONFIG_PATH="$HOME/.config/devinit/config.json"
 
 
@@ -57,7 +60,7 @@ plesk ext wp-toolkit --install \
     -db-password $DB_PASS
 	
 # Clone main theme into created 
-git clone $GIT_REPO $TARGET_DIR/pk-theme
+git clone -b test $GIT_REPO $TARGET_DIR/pk-theme
 
 git clone git@github.com-info:$(jq -r '.github.org' "$CONFIG_PATH")/${PROJECT_NAME}.git /var/www/vhosts/${PROJECT_NAME}.${DOMAIN}/httpdocs/wp-content/themes/$(jq -r '.github.template_repo' "$CONFIG_PATH")
 EOF

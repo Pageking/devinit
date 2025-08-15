@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source "$(dirname "$0")/helpers/check_public_folder.sh"
+check_public_folder
+
 PROJECT_NAME=$1
 if [[ -z "$PROJECT_NAME" ]]; then
   echo "❌ Missing project name. Usage: devinit init <project-name>"
