@@ -3,10 +3,8 @@
 source "$(dirname "${BASH_SOURCE[0]}")/helpers/check-public-folder.sh"
 check_public_folder
 
-CONFIG_PATH="$HOME/.config/devinit/config.json"
-
-
 # === CONFIGURATION ===
+CONFIG_PATH="$HOME/.config/devinit/config.json"
 SERVER=$(jq -r '.servers.server_1.server' "$CONFIG_PATH")
 DOMAIN=$(jq -r '.servers.server_1.domain' "$CONFIG_PATH")
 IP=$(jq -r '.servers.server_1.ip' "$CONFIG_PATH")

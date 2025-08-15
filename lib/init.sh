@@ -23,15 +23,15 @@ then
   exit 1
 fi
 
+CONFIG_PATH="$HOME/.config/devinit/config.json"
+# TODO: make deploy key per user instead of master for everyone
 SERVER=$(jq -r '.servers.server_1.server' "$CONFIG_PATH")
 DOMAIN=$(jq -r '.servers.server_1.domain' "$CONFIG_PATH")
-CONFIG_PATH="$HOME/.config/devinit/config.json"
 GITHUB_ORG=$(jq -r '.github.org' "$CONFIG_PATH")
 TEMPLATE_REPO=$(jq -r '.github.template_repo' "$CONFIG_PATH")
+DEPLOY_KEY=$(ssh "$SERVER" 'cat /opt/deploy_keys/info-deploy')
 
 echo "📦 Creating repo '$PROJECT_NAME' from template '$TEMPLATE_REPO'..."
-
-read -p -s "Please enter the private info deploy key from 1Password: " DEPLOY_KEY
 
 gh repo create "$GITHUB_ORG/$PROJECT_NAME" \
   --template "$GITHUB_ORG/$TEMPLATE_REPO" \
