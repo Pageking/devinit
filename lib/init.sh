@@ -3,15 +3,13 @@
 source "$(dirname "${BASH_SOURCE[0]}")/helpers/check-public-folder.sh"
 check_public_folder
 
-PROJECT_NAME=$1
-if [[ -z "$PROJECT_NAME" ]]; then
-  echo "❌ Missing project name. Usage: devinit init <project-name>"
-  exit 1
-fi
+read -p "Enter the project name: " PROJECT_NAME
 if [[ ! "$PROJECT_NAME" =~ ^[a-z0-9-]+$ ]]; then
   echo "Invalid project name. Use only lowercase letters, numbers, and hyphens (no spaces or special characters)."
   exit 1
 fi
+
+cd "wp-content/themes"
 
 if [ ! -d "pk-theme" ];
 then

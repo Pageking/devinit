@@ -64,16 +64,8 @@ git clone -b test $GIT_REPO $TARGET_DIR/pk-theme
 
 git clone git@github.com-info:$(jq -r '.github.org' "$CONFIG_PATH")/${PROJECT_NAME}.git /var/www/vhosts/${PROJECT_NAME}.${DOMAIN}/httpdocs/wp-content/themes/$(jq -r '.github.template_repo' "$CONFIG_PATH")
 EOF
-
-# TODO: dit script op elke plek in project folder structuur laten werken
-# Find the wp-content directory relative to the current directory
-WP_CONTENT_DIR=$(find . -type d -name "wp-content" -print -quit)
-
-if [ -z "$WP_CONTENT_DIR" ]; then
-	echo "❌ wp-content directory not found in this project."
-	exit 1
-fi
-
-rsync -avzh --progress --delete-after --update "${WP_CONTENT_DIR}/plugins" root@136.144.237.148:/var/www/vhosts/${PROJECT_NAME}.pk1.pageking.dev/httpdocs/wp-content/
-
 echo "✅ Domain created"
+
+rsync -avzh --progress --delete-after --update "wp-content/plugins" ${SERVER}:/var/www/vhosts/${PROJECT_NAME}.${DOMAIN}/httpdocs/wp-content/
+
+echo "✅ Plugins synchronized"
